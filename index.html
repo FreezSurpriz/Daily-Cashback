@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Cashback Loyalty Program</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #2E1329;
+    }
+
+    h1 {
+      opacity: 0;
+    }
+
+        #html-content-type-area {
+            --bg: #2E1329;
+            --text: #ffffff;
+            --radius: 12px;
+            --content-width: 1072px;
+            --gap: 34px;
+            margin: 0;
+            padding: 28px 16px 40px;
+            background: var(--bg);
+            font-family: "Jost", "Trebuchet MS", Arial, sans-serif;
+            color: var(--text);
+            box-sizing: border-box;
+        }
+
+        #html-content-type-area *,
+        #html-content-type-area *::before,
+        #html-content-type-area *::after {
+            box-sizing: border-box;
+        }
+
+        #html-content-type-area h1 {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-wrap {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+        }
+
+        #html-content-type-area .dc-block {
+            width: 100%;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        #html-content-type-area .dc-banner img,
+        #html-content-type-area .dc-gif img {
+            width: 100%;
+            display: block;
+        }
+
+    #html-content-type-area .dc-text-matrix {
+      position: relative;
+      border-radius: 12px;
+      background:
+        linear-gradient(90deg, #190018 0%, #26002a 45%, #1f0027 100%);
+        background-color: #1C041C;
+      padding: 34px 78px;
+      text-align: center;
+      overflow: hidden;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        #html-content-type-area .dc-text-top-glow {
+            position: absolute;
+            left: 50%;
+            top: -58px;
+            width: 538px;
+            height: 117px;
+            border-radius: 294px;
+            transform: translateX(-50%) rotate(180deg);
+            background: radial-gradient(50% 100% at 50% 100%, rgba(216, 13, 131, 0) 0%, rgba(105, 38, 148, 1) 82%, rgba(202, 151, 181, 0) 100%);
+            opacity: 0.3;
+            filter: blur(60px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-text-left-glow {
+            position: absolute;
+            left: -128px;
+            top: -134px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(105, 38, 148, 0.62);
+            filter: blur(60px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-text-matrix::before,
+        #html-content-type-area .dc-text-matrix::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 124px;
+            height: 100%;
+            background-image: url("img/matrix_first_block.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-text-matrix::before {
+            left: 0;
+        }
+
+        #html-content-type-area .dc-text-matrix::after {
+            right: 0;
+            transform: scaleX(-1);
+        }
+
+        #html-content-type-area .dc-text-matrix h2 {
+            margin: 0;
+            font-size: 28px;
+            line-height: 1.2;
+            font-weight: 600;
+            color: #39dfd4;
+            position: relative;
+            z-index: 2;
+        }
+
+        #html-content-type-area .dc-text-matrix p {
+            margin: 0;
+            line-height: 1.35;
+            font-size: 20px;
+            font-weight: 400;
+            color: #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        #html-content-type-area .dc-text-matrix p:first-of-type {
+            font-weight: 500;
+        }
+
+        #html-content-type-area .dc-text-matrix p:last-of-type {
+            font-weight: 400;
+        }
+
+        #html-content-type-area .dc-text-matrix .accent {
+            color: #00fff3;
+        }
+
+        #html-content-type-area .dc-gif {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        #html-content-type-area .dc-gif-actions {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            z-index: 2;
+        }
+
+        #html-content-type-area .dc-gif-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-indent: -9999px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #html-content-type-area .dc-bonus {
+            position: relative;
+            background: #1c041c;
+            border-radius: 12px;
+            padding: 36px 32px 28px;
+            text-align: center;
+            display: none;
+            overflow: hidden;
+        }
+
+        #html-content-type-area .dc-bonus::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 36px;
+            width: 538px;
+            height: 117px;
+            border-radius: 294px;
+            transform: translateX(-50%) rotate(180deg);
+            background: radial-gradient(50% 100% at 50% 100%, rgba(216, 13, 131, 0) 0%, rgba(105, 38, 148, 1) 82%, rgba(202, 151, 181, 0) 100%);
+            opacity: 0.3;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #html-content-type-area .dc-bonus > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        #html-content-type-area .dc-toggle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            overflow: hidden;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        #html-content-type-area #bonus-left:checked~.dc-wrap .dc-bonus-left {
+            display: block;
+        }
+
+        #html-content-type-area #bonus-left:checked~.dc-wrap .dc-bonus-right {
+            display: none;
+        }
+
+        #html-content-type-area #bonus-right:checked~.dc-wrap .dc-bonus-right {
+            display: flex;
+        }
+
+        #html-content-type-area #bonus-right:checked~.dc-wrap .dc-bonus-left {
+            display: none;
+        }
+
+        #html-content-type-area .dc-bonus-left {
+            display: block;
+        }
+
+        #html-content-type-area .dc-bonus p {
+            margin: 0;
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 1.32;
+            font-weight: 500;
+        }
+
+        #html-content-type-area .dc-bonus p+p {
+            margin-top: 8px;
+            font-size: 18px;
+        }
+
+        #html-content-type-area .dc-bonus-grid {
+            position: relative;
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        #html-content-type-area .dc-bonus-item {
+            min-height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            border-radius: 12px;
+            border: 0;
+            background: #1c041c;
+            font-size: 16px;
+            line-height: 1.25;
+            font-weight: 400;
+            color: #ffffff;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        #html-content-type-area .dc-bonus-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.01) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-bonus-item::before {
+            content: "\2713";
+            font-size: 21px;
+            line-height: 1;
+            color: #ffffff;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        #html-content-type-area .dc-bonus-present {
+            display: none;
+        }
+
+        #html-content-type-area .dc-bonus.alt {
+            border: 0;
+        }
+
+        #html-content-type-area .dc-bonus-right {
+            min-height: 129px;
+            padding: 22px 32px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 12px;
+            border: 0;
+        }
+
+        #html-content-type-area .dc-bonus-right-content {
+            position: relative;
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 1;
+        }
+
+        #html-content-type-area .dc-bonus-right-content::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 6px;
+            width: 538px;
+            height: 117px;
+            border-radius: 294px;
+            transform: translateX(-50%) rotate(180deg);
+            background: radial-gradient(50% 100% at 50% 100%, rgba(216, 13, 131, 0) 0%, rgba(105, 38, 148, 1) 82%, rgba(202, 151, 181, 0) 100%);
+            opacity: 0.3;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #html-content-type-area .dc-bonus-right-title {
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.25;
+            font-weight: 500;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+        }
+
+        #html-content-type-area .dc-bonus-right-text {
+            margin: 10px 0 0;
+            font-size: 18px;
+            line-height: 1.35;
+            font-weight: 400;
+            color: #ffffff;
+            opacity: 0.92;
+            position: relative;
+            z-index: 1;
+        }
+
+        #html-content-type-area .dc-bonus-right::before {
+            display: none;
+        }
+
+        #html-content-type-area .dc-bonus-right-image {
+            position: absolute;
+            right: 28px;
+            top: 50%;
+            width: 112px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #html-content-type-area .dc-cta {
+            position: relative;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #190018 0%, #26002a 45%, #1f0027 100%);
+            background-color: #1C041C;
+            min-height: 179px;
+            overflow: hidden;
+            padding: 18px 210px 18px 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #html-content-type-area .dc-cta::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -58px;
+            width: 538px;
+            height: 117px;
+            border-radius: 294px;
+            transform: translateX(-50%) rotate(180deg);
+            background: radial-gradient(50% 100% at 50% 100%, rgba(216, 13, 131, 0) 0%, rgba(105, 38, 148, 1) 82%, rgba(202, 151, 181, 0) 100%);
+            opacity: 0.3;
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-cta::after {
+            content: "";
+            position: absolute;
+            left: -128px;
+            top: -134px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(105, 38, 148, 0.62);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-cta-pills {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            width: 210px;
+            height: 122px;
+            transform: translateY(-50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-cta-left {
+            position: absolute;
+            left: 0;
+            top: -13px;
+            width: auto;
+            height: 111.94px;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        #html-content-type-area .dc-cta-left-secondary {
+            position: absolute;
+            left: 104px;
+            top: 30px;
+            width: auto;
+            height: 91.75px;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+    #html-content-type-area .dc-cta-right {
+      position: absolute;
+      right: 50px;
+      bottom: 0;
+      width: 175px;
+      z-index: 1;
+      pointer-events: none;
+        }
+
+        #html-content-type-area .dc-cta-center {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+            max-width: 410px;
+            padding: 0;
+        }
+
+        #html-content-type-area .dc-cta-center p {
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.2;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: 0.1px;
+        }
+
+        #html-content-type-area .dc-cta-center p+p {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        #html-content-type-area .dc-button {
+            margin-top: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 179px;
+            height: 43px;
+            border-radius: 999px;
+            background: linear-gradient(116.06deg, #8609E5 6.54%, #8F71FA 43.91%, #863AD6 60.26%, #5236B7 76.32%);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+        }
+
+        #html-content-type-area .dc-button:hover,
+        #html-content-type-area .dc-button:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(53, 85, 255, 0.5);
+            outline: none;
+        }
+
+        @media (max-width: 980px) {
+            #html-content-type-area {
+                --gap: 20px;
+                padding: 16px 10px 30px;
+            }
+
+            #html-content-type-area .dc-text-matrix {
+                padding: 20px 42px;
+                min-height: 102px;
+                gap: 7px;
+            }
+
+            #html-content-type-area .dc-text-matrix::before,
+            #html-content-type-area .dc-text-matrix::after {
+                display: none;
+            }
+
+            #html-content-type-area .dc-text-top-glow {
+                width: 260px;
+                height: 78px;
+                top: -40px;
+                border-radius: 140px;
+                filter: blur(36px);
+            }
+
+            #html-content-type-area .dc-text-left-glow {
+                left: -78px;
+                top: -82px;
+                width: 136px;
+                height: 136px;
+                filter: blur(38px);
+            }
+
+            #html-content-type-area .dc-text-matrix h2 {
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            #html-content-type-area .dc-text-matrix p {
+                font-size: 16px;
+            }
+
+            #html-content-type-area .dc-text-matrix p:first-of-type {
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.3;
+            }
+
+            #html-content-type-area .dc-text-matrix p:last-of-type {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.3;
+            }
+
+            #html-content-type-area .dc-bonus {
+                padding: 18px 12px 12px;
+                border-radius: 12px;
+            }
+
+            #html-content-type-area .dc-bonus-left {
+                padding: 20px 16px 14px;
+            }
+
+            #html-content-type-area .dc-bonus::before {
+                top: 20px;
+                width: 260px;
+                height: 78px;
+                border-radius: 140px;
+                filter: blur(36px);
+            }
+
+            #html-content-type-area .dc-bonus p {
+                font-size: 16px;
+                font-weight: 500;
+                text-align: left;
+                line-height: 1.3;
+            }
+
+            #html-content-type-area .dc-bonus p+p {
+                margin-top: 8px;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 1.35;
+            }
+
+            #html-content-type-area .dc-bonus-right {
+                position: relative;
+                min-height: 126px;
+                padding: 14px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                background: #1C041C;
+                text-align: left;
+                align-items: flex-start;
+                justify-content: flex-start;
+                overflow: hidden;
+            }
+
+            #html-content-type-area .dc-bonus-right::before {
+                display: none;
+            }
+
+            #html-content-type-area .dc-bonus-right::after {
+                display: block;
+                content: "";
+                position: absolute;
+                right: -14px;
+                top: 4px;
+                width: 128px;
+                height: calc(100% - 8px);
+                background-image: url("img/matrix_first_block.png");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0.85;
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            #html-content-type-area .dc-bonus-right-content {
+                position: relative;
+                margin: 0;
+                max-width: none;
+                width: 100%;
+                margin-right: 0;
+                padding: 12px 30px 12px 12px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                background: #1C041C;
+                align-items: flex-start;
+                text-align: left;
+                z-index: 1;
+            }
+
+            #html-content-type-area .dc-bonus-right-content::after {
+                display: none;
+            }
+
+            #html-content-type-area .dc-bonus-right-title {
+                font-size: 16px;
+                line-height: 1.35;
+            }
+
+            #html-content-type-area .dc-bonus-right-text {
+                margin-top: 8px;
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+            #html-content-type-area .dc-bonus-right-image {
+                right: 0px;
+                bottom: 0px;
+                top: auto;
+                width: 62px;
+                transform: none;
+                z-index: 2;
+            }
+
+            #html-content-type-area .dc-bonus-grid {
+                margin-top: 10px;
+                grid-template-columns: 1fr;
+                gap: 7px;
+                padding: 16px 90px 16px 16px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                background: #1C041C;
+                min-height: 126px;
+                overflow: hidden;
+            }
+
+            #html-content-type-area .dc-bonus-grid::before {
+                display: block;
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(120% 110% at 100% 100%,
+                        rgba(105, 38, 148, 0.62) 0%,
+                        rgba(105, 38, 148, 0.38) 22%,
+                        rgba(105, 38, 148, 0.14) 40%,
+                        rgba(28, 4, 28, 0) 64%);
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            #html-content-type-area .dc-bonus-grid::after {
+                display: block;
+                content: "";
+                position: absolute;
+                left: auto;
+                right: -55px;
+                top: 4px;
+                width: 128px;
+                height: calc(100% - 8px);
+                background-image: url("img/matrix_first_block.png");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0.85;
+                pointer-events: none;
+                z-index: 0;
+                transform: none;
+                filter: none;
+            }
+
+            #html-content-type-area .dc-bonus-item {
+                min-height: 0;
+                border-radius: 0;
+                font-size: 16px;
+                line-height: 1.25;
+                background: transparent;
+                border: 0;
+                padding: 0;
+                justify-content: flex-start;
+                overflow: visible;
+            }
+
+            #html-content-type-area .dc-bonus-item::after {
+                display: none;
+            }
+
+            #html-content-type-area .dc-bonus-item::before {
+                font-size: 14px;
+                margin-top: 0;
+            }
+
+            #html-content-type-area .dc-bonus-present {
+                display: block;
+                position: absolute;
+                right: -30px;
+                bottom: -22px;
+                width: 108px;
+                transform: rotate(-12deg);
+                transform-origin: bottom right;
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            #html-content-type-area .dc-cta {
+                min-height: 0;
+                padding: 16px 16px 14px;
+                display: block;
+                border-radius: 12px;
+            }
+
+            #html-content-type-area .dc-cta::before {
+                width: 260px;
+                height: 78px;
+                top: -40px;
+                border-radius: 140px;
+                filter: blur(36px);
+            }
+
+            #html-content-type-area .dc-cta::after {
+                left: -78px;
+                top: -82px;
+                width: 136px;
+                height: 136px;
+                filter: blur(38px);
+            }
+
+            #html-content-type-area .dc-cta-pills {
+                display: none;
+            }
+
+            #html-content-type-area .dc-cta-left {
+                width: 60px;
+                height: 78px;
+                top: 4px;
+                left: 0;
+            }
+
+            #html-content-type-area .dc-cta-left-secondary {
+                width: 44px;
+                height: 64px;
+                left: 66px;
+                top: 20px;
+            }
+
+            #html-content-type-area .dc-cta-right {
+                position: absolute;
+                display: block;
+                width: 56px;
+                left: 12px;
+                top: 8px;
+                right: auto;
+                bottom: auto;
+                margin: 0;
+            }
+
+            #html-content-type-area .dc-cta-center {
+                padding: 0;
+                text-align: left;
+                max-width: none;
+            }
+
+            #html-content-type-area .dc-cta-center p {
+                padding-left: 64px;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.2;
+            }
+
+            #html-content-type-area .dc-cta-center p+p {
+                margin-top: 6px;
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 1.35;
+                opacity: 0.9;
+            }
+
+            #html-content-type-area .dc-button {
+                display: flex;
+                width: 100%;
+                height: 40px;
+                margin-top: 18px;
+                font-size: 16px;
+                font-weight: 600;
+                border-radius: 999px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="html-content-type-area">
+        <h1>Daily Cashback Loyalty Program</h1>
+
+        <input class="dc-toggle" type="radio" name="bonus-path" id="bonus-left" checked>
+        <input class="dc-toggle" type="radio" name="bonus-path" id="bonus-right">
+
+        <div class="dc-wrap">
+            <section class="dc-block dc-banner" aria-label="Daily Cashback banner">
+                <picture>
+                    <source srcset="img/banner_first_mb.png" media="(max-width: 980px)">
+                    <img src="img/Banner_first.png" alt="Daily Cashback Loyalty Program">
+                </picture>
+            </section>
+
+            <section class="dc-block dc-text-matrix" aria-label="Program description">
+                <span class="dc-text-left-glow" aria-hidden="true"></span>
+                <span class="dc-text-top-glow" aria-hidden="true"></span>
+                <h2>Your game. Your rules.</h2>
+                <p>Choose your bonus &ndash; extra value or loss protection.</p>
+                <p>You can update your choice once a week, every <span class="accent">Monday</span> until <span
+                        class="accent">16:00</span>.</p>
+            </section>
+
+            <section class="dc-block dc-gif" aria-label="Choose bonus type">
+                <picture>
+                    <source srcset="img/banner_second_mb.gif" media="(max-width: 980px)">
+                    <img src="img/banner_second.gif" alt="Choose left or right bonus path">
+                </picture>
+                <div class="dc-gif-actions">
+                    <label class="dc-gif-link" for="bonus-left" aria-label="Show first bonus option">Left option</label>
+                    <label class="dc-gif-link" for="bonus-right" aria-label="Show second bonus option">Right option</label>
+                </div>
+            </section>
+
+            <section class="dc-block dc-bonus dc-bonus-left" aria-label="Bonus conditions">
+                <p>This bonus is credited instantly after your deposit.</p>
+                <p>The higher your deposit, the higher your bonus &mdash; giving you more playtime without using your
+                    own balance.</p>
+                <div class="dc-bonus-grid">
+                    <div class="dc-bonus-item">2,000&#8378; deposit &ndash; 1%</div>
+                    <div class="dc-bonus-item">5,000&#8378; deposit &ndash; 1.5%</div>
+                    <div class="dc-bonus-item">20,000&#8378; deposit &ndash; 2%</div>
+                    <div class="dc-bonus-item">50,000&#8378; deposit &ndash; 3%</div>
+                </div>
+                <img class="dc-bonus-present" src="img/present.png" alt="Gift box">
+            </section>
+
+            <section class="dc-block dc-bonus dc-bonus-right alt" aria-label="Alternative bonus conditions">
+                <div class="dc-bonus-right-content">
+                    <p class="dc-bonus-right-title">Play with confidence &mdash; 5% of your losses is returned daily.</p>
+                    <p class="dc-bonus-right-text">Cashback is credited automatically, helping you stay in the game longer and reduce risks.</p>
+                </div>
+                <img class="dc-bonus-right-image" src="img/Cashback.png" alt="Cashback icon">
+            </section>
+
+            <section class="dc-block dc-cta" aria-label="Survey call to action">
+                <div class="dc-cta-pills" aria-hidden="true">
+                    <img class="dc-cta-left" src="img/tablet_purple.png" alt="Purple capsule">
+                    <img class="dc-cta-left-secondary" src="img/tablet_gold.png" alt="Gold capsule">
+                </div>
+                <div class="dc-cta-center">
+                    <p>Let us tailor the experience to you.</p>
+                    <p>Complete a quick survey and unlock your bonus.</p>
+                    <a class="dc-button" href="#">Take the survey</a>
+                </div>
+                <img class="dc-cta-right" src="img/tablet.png" alt="Tablet with survey checklist">
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
