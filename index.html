@@ -63,8 +63,7 @@
             overflow: hidden;
         }
 
-        #html-content-type-area .dc-banner img,
-        #html-content-type-area .dc-gif img {
+        #html-content-type-area .dc-banner img {
             width: 100%;
             display: block;
         }
@@ -168,27 +167,91 @@
             color: #00fff3;
         }
 
-        #html-content-type-area .dc-gif {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-
-        #html-content-type-area .dc-gif-actions {
-            position: absolute;
-            inset: 0;
+        #html-content-type-area .dc-choice {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        #html-content-type-area .dc-choice-card {
+            display: block;
+            position: relative;
+            border-radius: 12px;
+            overflow: visible;
+            border: 0;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            line-height: 0;
+            padding: 0;
+            vertical-align: top;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        #html-content-type-area .dc-choice-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            box-shadow: inset 0 0 0 1.5px transparent;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #html-content-type-area .dc-choice-card img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            border: 0;
+        }
+
+        #html-content-type-area .dc-choice-btn {
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            transform: translateX(-50%);
+            min-width: 180px;
+            height: 40px;
+            padding: 0 24px;
+            border-radius: 999px;
+            background: linear-gradient(116.06deg, #8609E5 6.54%, #8F71FA 43.91%, #863AD6 60.26%, #5236B7 76.32%);
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 1.1;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+            pointer-events: auto;
             z-index: 2;
         }
 
-        #html-content-type-area .dc-gif-link {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-indent: -9999px;
-            overflow: hidden;
-            cursor: pointer;
+        #html-content-type-area #bonus-left:checked~.dc-wrap .dc-choice-card[for="bonus-left"],
+        #html-content-type-area #bonus-right:checked~.dc-wrap .dc-choice-card[for="bonus-right"] {
+            box-shadow: none;
+        }
+
+        #html-content-type-area #bonus-left:checked~.dc-wrap .dc-choice-card[for="bonus-left"] img,
+        #html-content-type-area #bonus-right:checked~.dc-wrap .dc-choice-card[for="bonus-right"] img {
+            border: 0;
+        }
+
+        #html-content-type-area #bonus-left:checked~.dc-wrap .dc-choice-card[for="bonus-left"],
+        #html-content-type-area #bonus-right:checked~.dc-wrap .dc-choice-card[for="bonus-right"] {
+            border-color: transparent;
+        }
+
+        #html-content-type-area #bonus-left:checked~.dc-wrap .dc-choice-card[for="bonus-left"]::before,
+        #html-content-type-area #bonus-right:checked~.dc-wrap .dc-choice-card[for="bonus-right"]::before {
+            inset: 0;
+            box-shadow: inset 0 0 0 1.5px #39dfd4;
+        }
+
+        #html-content-type-area #bonus-right:checked~.dc-wrap .dc-choice-card[for="bonus-right"]::before {
+            inset: 0 0 0 3px;
         }
 
         #html-content-type-area .dc-bonus {
@@ -539,13 +602,13 @@
         @media (max-width: 980px) {
             #html-content-type-area {
                 --gap: 40px;
-                padding: 16px 10px 30px;
+                padding: 14px 10px 24px;
             }
 
             #html-content-type-area .dc-text-matrix {
-                padding: 20px 42px;
-                min-height: 102px;
-                gap: 7px;
+                padding: 18px 16px 14px;
+                min-height: 0;
+                gap: 8px;
             }
 
             #html-content-type-area .dc-text-matrix::before,
@@ -761,6 +824,32 @@
                 margin-top: 0;
             }
 
+            #html-content-type-area .dc-choice {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                max-width: none;
+            }
+
+            #html-content-type-area .dc-choice-btn {
+                bottom: -15px;
+                min-width: 112px;
+                height: 28px;
+                padding: 0 12px;
+                font-size: 11px;
+            }
+
+            #html-content-type-area .dc-choice-card {
+                border-radius: 12px;
+            }
+
+            #html-content-type-area .dc-choice-card img {
+                border-radius: 12px;
+            }
+
+            #html-content-type-area #bonus-right:checked~.dc-wrap .dc-choice-card[for="bonus-right"]::before {
+                inset: 0;
+            }
+
             #html-content-type-area .dc-bonus-present {
                 display: block;
                 position: absolute;
@@ -775,9 +864,9 @@
 
             #html-content-type-area .dc-cta {
                 min-height: 0;
-                padding: 16px 16px 14px;
+                padding: 14px 14px 12px;
                 display: block;
-                border-radius: 12px;
+                border-radius: 10px;
             }
 
             #html-content-type-area .dc-cta::before {
@@ -883,15 +972,15 @@
                         class="accent">16:00</span>.</p>
             </section>
 
-            <section class="dc-block dc-gif" aria-label="Choose bonus type">
-                <picture>
-                    <source srcset="img/banner_second_mb.gif" media="(max-width: 980px)">
-                    <img src="img/banner_second.gif" alt="Choose left or right bonus path">
-                </picture>
-                <div class="dc-gif-actions">
-                    <label class="dc-gif-link" for="bonus-left" aria-label="Show first bonus option">Left option</label>
-                    <label class="dc-gif-link" for="bonus-right" aria-label="Show second bonus option">Right option</label>
-                </div>
+            <section class="dc-choice" aria-label="Choose bonus type">
+                <label class="dc-choice-card" for="bonus-left" aria-label="Show Daily Cashback option">
+                    <img src="img/left.png" alt="Daily Cashback option">
+                    <span class="dc-choice-btn">View Details</span>
+                </label>
+                <label class="dc-choice-card" for="bonus-right" aria-label="Show Loyalty Program option">
+                    <img src="img/right.png" alt="Loyalty Program option">
+                    <span class="dc-choice-btn">View Details</span>
+                </label>
             </section>
 
             <section class="dc-block dc-bonus dc-bonus-left" aria-label="Bonus conditions">
